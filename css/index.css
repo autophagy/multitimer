@@ -1,0 +1,61 @@
+body {
+    background-color: #D3E8B3;
+    margin: 0px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#title-bar {
+    background-color: #D3E880;
+    padding: 10px 0px 10px 0px;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid #A9BA65;
+}
+
+#title-bar button {
+    margin: 0px 5px 0px 5px;
+    min-height: 40px;
+    min-width: 40px;
+    background-color: #899653;
+    border: 1px solid #66703D;
+    color: white;
+    border-radius: 4px;
+}
+
+#title-bar img {
+    opacity: 0.6;
+}
+
+#title-options {
+    float: left;
+    margin-left: 10px;
+}
+
+#information {
+    float: right;
+    margin-right: 10px;
+}
+
+/* Timers */
+
+.timer {
+    background-color: #FF7070;
+    float: left;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.timer input[type="text"], .timer textarea, .timer select {
+    background-color: #E66565;
+    border: 1px solid #CF5B5B;
+    box-shadow: none;
+    border-radius: 5px;
+}
+
+.timer .remove-timer {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+}
