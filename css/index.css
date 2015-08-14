@@ -1,25 +1,35 @@
 body {
     background-color: #D3E8B3;
     margin: 0px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Ubuntu", "Helvetica Neue", Helvetica, Arial, serif;
 }
 
 #title-bar {
-    background-color: #D3E880;
+    background-color: hsl(72, 69%, 71%);
     padding: 10px 0px 10px 0px;
     display: inline-block;
     width: 100%;
     border-bottom: 1px solid #A9BA65;
 }
 
+#title-bar h1 {
+    display: inline;
+    margin-right: 10px;
+}
+
 #title-bar button {
     margin: 0px 5px 0px 5px;
     min-height: 40px;
     min-width: 40px;
-    background-color: #899653;
+    background-color: rgba(0,0,0,0.15);
     border: 1px solid #66703D;
-    color: white;
+    color: rgba(0,0,0,0.8);
     border-radius: 4px;
+}
+
+
+#title-bar button:hover {
+    background-color: rgba(0,0,0,0.25);
 }
 
 #title-bar img {
@@ -38,24 +48,92 @@ body {
 
 /* Timers */
 
+#timerspace {
+    float: left;
+    width: 100%;
+    margin: 10px 5px 10px 5px;
+}
+
 .timer {
-    background-color: #FF7070;
     float: left;
     padding: 10px;
-    margin: 30px;
+    margin: 0px 8px 0px 8px;
     border-radius: 5px;
     position: relative;
+    max-width: 17em;
+    border: 1px solid rgba(0,0,0,0.3);
+    -webkit-box-shadow: 10px 10px 67px -27px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 67px -27px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 67px -27px rgba(0,0,0,0.75);
 }
 
 .timer input[type="text"], .timer textarea, .timer select {
-    background-color: #E66565;
-    border: 1px solid #CF5B5B;
+    background-color: rgba(0,0,0,0.15);
+    border: 1px solid rgba(0,0,0,0.3);
     box-shadow: none;
     border-radius: 5px;
+    color: rgba(0,0,0,0.8);
 }
 
-.timer .remove-timer {
-    position: absolute;
-    right: 5px;
-    top: 0px;
+.timer select {
+    font-size: 1em;
+    width: 80%;
+    padding: 9px 0px 9px 0px;
+}
+
+.timer button {
+    background-color: rgba(0,0,0,0.15);
+    margin: 0px 5px 0px 5px;
+    min-height: 40px;
+    min-width: 40px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 4px;
+}
+
+.timer button:hover {
+    background-color: rgba(0,0,0,0.25);
+}
+
+.timer h3 {
+    font-size: 1em;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.timer .timer-title input {
+    width: 100%;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.timer .timer-time-options {
+    text-align: center;
+}
+
+.timer .timer-time-options input {
+    width: 20%;
+    font-size: 2em;
+    text-align: center;
+}
+
+.timer .timer-type-options button {
+    float: right;
+    margin-right: 0px;
+}
+
+.timer .timer-options {
+    padding-top: 5px;
+}
+
+.timer .timer-notes textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.timer .timer-options .play-button, .timer .time-options .reload-button {
+    margin-left: 0px;
+}
+
+.timer .timer-options .close-button {
+    float: right;
+    margin-right: 0px;
 }

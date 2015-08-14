@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Multitimer</title>
+    <title>multi/timer - multiple, personalisable egg timers</title>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
     <link href="css/index.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-2.1.4.min.js" /></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+    $(".timer").draggable();
+    </script>
 </head>
 <body>
 
     <div id="title-bar">
         <div id="title-options">
-            MULTITIMER
-            <button><img src="images/plus.png" /></button>
-            <button id="reset"><img src="images/reload.png" /></button>
+            <h1>MULTI/TIMER</h1>
+            <button title="Add a new timer"><img src="images/plus.png" /></button>
+
+            <button id="remove-all" title="Remove all timers"><img src="images/reload.png" /></button>
+
+            <button id="play-all" title="Pause/Play all timers"><img src="images/play.png" /></button>
         </div>
         <div id="information">
             <button>About</button>
@@ -19,23 +28,41 @@
         </div>
     </div>
 
+    <div id="about" style="display: none;">
+        <h2>About</h2>
+        <p>This is a small project I made after being frustrated with cooking timer websites. I don't have a mechanical one, and I often have to track the timing of multiple things, which none of these websites do particularly well. Instead of opening multiple timer pages and trying to remember what each was for, I made this instead!</p>
+        <h2>Thanks</h2>
+        <p>I'd like to thank the following:
+            <ul>
+                <li><a href="https://www.freesound.org">Freesound.org</a> for the alarm sounds</a></li>
+                <li><a href="https://useiconic.com/open/">Iconic</a> for their Open Iconic icon set</a></li>
+            </ul>
+        </p>
+    </div>
+    </div>
+
+    <div id="how-to-use" style="display: none;">
+        To be written...
+    </div>
+
+    <div id="contact" style="display: none;">
+        To be written...
+    </div>
+
     <div id="timerspace">
 
-        <div class="timer">
-                <div class="remove-timer">x</div>
+        <div class="timer" style="background-color: #FF7070;">
 
                 <div class="timer-title">
-                    <input type="text" name="timer-title" />
+                    <input type="text" name="timer-title" maxlength="20" />
                 </div>
 
                 <div class="timer-time">
                     <h3>Timer</h3>
                     <div class="timer-time-options">
-                        <input type="text" name="timer-time" />
-                        <select>
-                            <option name="seconds">Seconds</option>
-                            <option name="minutes">Minutes</option>
-                        </select>
+                        <input type="text" name="hours" maxlength="2" value="00"/> :
+                        <input type="text" name="minutes" maxlength="2" value="00"/> :
+                        <input type="text" name="seconds" maxlength="2" value="00"/>
                     </div>
                 </div>
 
@@ -52,17 +79,93 @@
 
                 <div class="timer-notes">
                     <h3>Notes</h3>
-                    <textarea rows="4" cols="30">
-                    </textarea>
+                    <textarea rows="4"></textarea>
                 </div>
 
                 <div class="timer-options">
-                    <button><img src="images/play.png" /></button>
-                    <button><img src="images/reload.png" /></button>
+                    <button class="play-button"><img src="images/play.png" /></button>
+                    <button class="reload-button"><img src="images/reload.png" /></button>
+                    <button class="close-button"><img src="images/close.png" /></button>
                 </div>
 
         </div>
 
+
+                <div class="timer" style="background-color: #70DEFF;">
+                    <div class="timer-title">
+                        <input type="text" name="timer-title" maxlength="20" />
+                    </div>
+
+                    <div class="timer-time">
+                        <h3>Timer</h3>
+                        <div class="timer-time-options">
+                            <input type="text" name="hours" maxlength="2" value="00"/> :
+                            <input type="text" name="minutes" maxlength="2" value="00"/> :
+                            <input type="text" name="seconds" maxlength="2" value="00"/>
+                        </div>
+                    </div>
+
+                    <div class="timer-type">
+                        <h3>Alarm Type</h3>
+                        <div class="timer-type-options">
+                            <select>
+                                <option name="annoying">Annoying Alarm</option>
+                                <option name="soothing">Soothing Alarm</option>
+                            </select>
+                            <button><img src="images/volume-on.png"/></button>
+                        </div>
+                    </div>
+
+                    <div class="timer-notes">
+                        <h3>Notes</h3>
+                        <textarea rows="4"></textarea>
+                    </div>
+
+                    <div class="timer-options">
+                        <button class="play-button"><img src="images/play.png" /></button>
+                        <button class="reload-button"><img src="images/reload.png" /></button>
+                        <button class="close-button"><img src="images/close.png" /></button>
+                    </div>
+
+            </div>
+
+            <div class="timer" style="background-color: #FFC770;">
+                <div class="timer-title">
+                    <input type="text" name="timer-title" maxlength="20" />
+                </div>
+
+                <div class="timer-time">
+                    <h3>Timer</h3>
+                    <div class="timer-time-options">
+                        <input type="text" name="hours" maxlength="2" value="00"/> :
+                        <input type="text" name="minutes" maxlength="2" value="00"/> :
+                        <input type="text" name="seconds" maxlength="2" value="00"/>
+                    </div>
+                </div>
+
+                <div class="timer-type">
+                    <h3>Alarm Type</h3>
+                    <div class="timer-type-options">
+                        <select>
+                            <option name="annoying">Annoying Alarm</option>
+                            <option name="soothing">Soothing Alarm</option>
+                        </select>
+                        <button><img src="images/volume-on.png"/></button>
+                    </div>
+                </div>
+
+                <div class="timer-notes">
+                    <h3>Notes</h3>
+                    <textarea rows="4"></textarea>
+                </div>
+
+                <div class="timer-options">
+                    <button class="play-button"><img src="images/play.png" /></button>
+                    <button class="reload-button"><img src="images/reload.png" /></button>
+                    <button class="close-button"><img src="images/close.png" /></button>
+                </div>
+
+        </div>
     </div>
 
 </body>
