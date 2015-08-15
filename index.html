@@ -6,6 +6,7 @@
     <link href="css/index.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-2.1.4.min.js" /></script>
     <script src="js/jquery-ui.min.js"></script>
+    <script src="js/multitimer.js"></script>
     <script>
     $(".timer").draggable();
     </script>
@@ -15,7 +16,7 @@
     <div id="title-bar">
         <div id="title-options">
             <h1>MULTI/TIMER</h1>
-            <button title="Add a new timer"><img src="images/plus.png" /></button>
+            <button title="Add a new timer" onclick="addTimer();"><img src="images/plus.png" /></button>
 
             <button id="remove-all" title="Remove all timers"><img src="images/reload.png" /></button>
 
@@ -51,121 +52,6 @@
 
     <div id="timerspace">
 
-        <div class="timer" style="background-color: #FF7070;">
-
-                <div class="timer-title">
-                    <input type="text" name="timer-title" maxlength="20" />
-                </div>
-
-                <div class="timer-time">
-                    <h3>Timer</h3>
-                    <div class="timer-time-options">
-                        <input type="text" name="hours" maxlength="2" value="00"/> :
-                        <input type="text" name="minutes" maxlength="2" value="00"/> :
-                        <input type="text" name="seconds" maxlength="2" value="00"/>
-                    </div>
-                </div>
-
-                <div class="timer-type">
-                    <h3>Alarm Type</h3>
-                    <div class="timer-type-options">
-                        <select>
-                            <option name="annoying">Annoying Alarm</option>
-                            <option name="soothing">Soothing Alarm</option>
-                        </select>
-                        <button><img src="images/volume-on.png"/></button>
-                    </div>
-                </div>
-
-                <div class="timer-notes">
-                    <h3>Notes</h3>
-                    <textarea rows="4"></textarea>
-                </div>
-
-                <div class="timer-options">
-                    <button class="play-button"><img src="images/play.png" /></button>
-                    <button class="reload-button"><img src="images/reload.png" /></button>
-                    <button class="close-button"><img src="images/close.png" /></button>
-                </div>
-
-        </div>
-
-
-                <div class="timer" style="background-color: #70DEFF;">
-                    <div class="timer-title">
-                        <input type="text" name="timer-title" maxlength="20" />
-                    </div>
-
-                    <div class="timer-time">
-                        <h3>Timer</h3>
-                        <div class="timer-time-options">
-                            <input type="text" name="hours" maxlength="2" value="00"/> :
-                            <input type="text" name="minutes" maxlength="2" value="00"/> :
-                            <input type="text" name="seconds" maxlength="2" value="00"/>
-                        </div>
-                    </div>
-
-                    <div class="timer-type">
-                        <h3>Alarm Type</h3>
-                        <div class="timer-type-options">
-                            <select>
-                                <option name="annoying">Annoying Alarm</option>
-                                <option name="soothing">Soothing Alarm</option>
-                            </select>
-                            <button><img src="images/volume-on.png"/></button>
-                        </div>
-                    </div>
-
-                    <div class="timer-notes">
-                        <h3>Notes</h3>
-                        <textarea rows="4"></textarea>
-                    </div>
-
-                    <div class="timer-options">
-                        <button class="play-button"><img src="images/play.png" /></button>
-                        <button class="reload-button"><img src="images/reload.png" /></button>
-                        <button class="close-button"><img src="images/close.png" /></button>
-                    </div>
-
-            </div>
-
-            <div class="timer" style="background-color: #FFC770;">
-                <div class="timer-title">
-                    <input type="text" name="timer-title" maxlength="20" />
-                </div>
-
-                <div class="timer-time">
-                    <h3>Timer</h3>
-                    <div class="timer-time-options">
-                        <input type="text" name="hours" maxlength="2" value="00"/> :
-                        <input type="text" name="minutes" maxlength="2" value="00"/> :
-                        <input type="text" name="seconds" maxlength="2" value="00"/>
-                    </div>
-                </div>
-
-                <div class="timer-type">
-                    <h3>Alarm Type</h3>
-                    <div class="timer-type-options">
-                        <select>
-                            <option name="annoying">Annoying Alarm</option>
-                            <option name="soothing">Soothing Alarm</option>
-                        </select>
-                        <button><img src="images/volume-on.png"/></button>
-                    </div>
-                </div>
-
-                <div class="timer-notes">
-                    <h3>Notes</h3>
-                    <textarea rows="4"></textarea>
-                </div>
-
-                <div class="timer-options">
-                    <button class="play-button"><img src="images/play.png" /></button>
-                    <button class="reload-button"><img src="images/reload.png" /></button>
-                    <button class="close-button"><img src="images/close.png" /></button>
-                </div>
-
-        </div>
     </div>
 
 </body>
