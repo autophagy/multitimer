@@ -7,9 +7,6 @@
     <script src="js/jquery-2.1.4.min.js" /></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/multitimer.js"></script>
-    <script>
-    $(".timer").draggable();
-    </script>
 </head>
 <body>
 
@@ -18,9 +15,11 @@
             <h1>MULTI/TIMER</h1>
             <button title="Add a new timer" onclick="addTimer();"><img src="images/plus.png" /></button>
 
-            <button id="remove-all" title="Remove all timers"><img src="images/reload.png" /></button>
+            <button title="Remove all timers" onclick="removeTimers();"><img src="images/reload.png" /></button>
 
-            <button id="play-all" title="Pause/Play all timers"><img src="images/play.png" /></button>
+            <button title="Play all timers" onclick="playTimers();"><img src="images/play.png" /></button>
+
+            <button title="Pause all timers" onclick="pauseTimers();"><img src="images/pause.png" /></button>
         </div>
         <div id="information">
             <button>About</button>

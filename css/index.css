@@ -50,8 +50,6 @@ body {
 
 #timerspace {
     float: left;
-    width: 100%;
-    margin: 5px;
 }
 
 .timer {
@@ -67,12 +65,13 @@ body {
     box-shadow: 10px 10px 67px -27px rgba(0,0,0,0.75);
 }
 
-.timer input[type="text"], .timer textarea, .timer select {
+.timer input[type="text"], .timer textarea, .timer select, .timer select options {
     background-color: rgba(0,0,0,0.15);
     border: 1px solid rgba(0,0,0,0.3);
     box-shadow: none;
     border-radius: 5px;
     color: rgba(0,0,0,0.8);
+    -moz-appearance: none;
 }
 
 .timer select {
