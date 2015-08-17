@@ -6,9 +6,11 @@ var timerCounter = 0;
 var Timer = (function () {
     function Timer(newID) {
         this.timerID = newID;
+        this.selector = '#' + newID;
         this.colour = $.Color().hsla(Math.floor(Math.random() * 36)*10,1,0.7,1).toHexString();
         this.seconds = 0;
         this.playing = false;
+        this.alarmed = false;
         this.sound = null;
         this.muted = false;
 
@@ -45,14 +47,14 @@ var Timer = (function () {
                 </div>\
                 <div class="timer-options">\
                     <button class="play-button" onclick="timers[&quot;' + this.timerID + '&quot;].togglePlaying();"><img src="images/play.png" /></button>\
-                    <button class="reload-button" onclick="timers[&quot;' + this.timerID + '&quot;].decrement();"><img src="images/reload.png" /></button>\
+                    <button class="reload-button" onclick="timers[&quot;' + this.timerID + '&quot;].reset();"><img src="images/reload.png" /></button>\
                     <button class="close-button" onclick="timers[&quot;' + this.timerID + '&quot;].delete();"><img src="images/close.png" /></button>\
                 </div>\
         </div>');
     }
 
     Timer.prototype.delete = function () {
-        $('#' + this.timerID).remove();
+        $(this.selector).remove();
         if (this.sound != null) {
             this.sound.pause();
         }
@@ -60,7 +62,7 @@ var Timer = (function () {
     }
 
     Timer.prototype.sampleSound = function () {
-        var src = $('#' + this.timerID + ' .timer-type-options select').val();
+        var src = $(this.selector + ' .timer-type-options select').val();
         var audioElement = document.createElement('audio');
         audioElement.setAttribute('src', src);
         audioElement.play();
@@ -78,30 +80,48 @@ var Timer = (function () {
 
     Timer.prototype.play = function () {
         // Get the seconds
-        this.seconds =  parseInt($('#' + this.timerID + ' input[name="hours"]').val() * 3600);
-        this.seconds += parseInt($('#' + this.timerID + ' input[name="minutes"]').val() * 60);
-        this.seconds += parseInt($('#' + this.timerID + ' input[name="seconds"]').val());
+        this.seconds =  parseInt($(this.selector + ' input[name="hours"]').val() * 3600);
+        this.seconds += parseInt($(this.selector + ' input[name="minutes"]').val() * 60);
+        this.seconds += parseInt($(this.selector + ' input[name="seconds"]').val());
 
         if (this.seconds > 0)
         {
-            $('#' + this.timerID + ' .timer-time-options input').prop("readonly", true);
-            $('#' + this.timerID + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0)");
-            $('#' + this.timerID + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0)");
-            $('#' + this.timerID+ ' .play-button img').attr("src", "images/pause.png");
+            $(this.selector + ' .timer-time-options input').prop("readonly", true);
+            $(this.selector + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0)");
+            $(this.selector + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0)");
+            $(this.selector+ ' .play-button img').attr("src", "images/pause.png");
             this.playing = true;
         }
 
     }
 
     Timer.prototype.pause = function () {
-        $('#' + this.timerID + ' .timer-time-options input').prop("readonly", false);
-        $('#' + this.timerID + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0.3)");
-        $('#' + this.timerID + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0.15)");
+        $(this.selector + ' .timer-time-options input').prop("readonly", false);
+        $(this.selector + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0.3)");
+        $(this.selector + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0.15)");
 
-        $('#' + this.timerID+ ' .play-button img').attr("src", "images/play.png");
+        $(this.selector+ ' .play-button img').attr("src", "images/play.png");
 
         this.playing = false;
-        this.sound.pause();
+
+        if(this.sound != null)
+        {
+            this.sound.pause();
+        }
+
+        this.alarmed = false;
+    }
+
+    Timer.prototype.reset = function () {
+        this.pause();
+        $(this.selector + ' .timer-title input').val('New Timer');
+
+        this.seconds = 0;
+        this.updateDisplay();
+
+        $(this.selector + ' .timer-type-options select').val('sounds/alarm.mp3');
+
+        $(this.selector + ' .timer-notes textarea').val('');
     }
 
     Timer.prototype.decrement = function () {
@@ -118,18 +138,29 @@ var Timer = (function () {
         var hours = Math.floor(this.seconds/3600);
         var minutes = Math.floor((this.seconds - hours*3600)/60);
 
-        $('#' + this.timerID + ' .timer-time-options input[name="hours"]').val(formatTime(hours));
-        $('#' + this.timerID + ' .timer-time-options input[name="minutes"]').val(formatTime(minutes));
-        $('#' + this.timerID + ' .timer-time-options input[name="seconds"]').val(formatTime(this.seconds - (hours*3600) - (minutes*60)));
+        $(this.selector + ' .timer-time-options input[name="hours"]').val(formatTime(hours));
+        $(this.selector + ' .timer-time-options input[name="minutes"]').val(formatTime(minutes));
+        $(this.selector + ' .timer-time-options input[name="seconds"]').val(formatTime(this.seconds - (hours*3600) - (minutes*60)));
     }
 
     Timer.prototype.toggleAlarmed = function () {
-        var src = $('#' + this.timerID + ' .timer-type-options select').val();
+        var src = $(this.selector + ' .timer-type-options select').val();
         this.sound = document.createElement('audio');
         this.sound.setAttribute('src', src);
         this.sound.setAttribute('loop', true);
         this.sound.play();
+        this.alarmed = true;
     };
+
+    Timer.prototype.toggleAlarmAnimation = function () {
+        if ($.Color( $(this.selector).css('background-color')).toHexString() != this.colour) {
+            $(this.selector).css('background-color', this.colour);
+        } else {
+            console.log('poop');
+            $(this.selector).css('background-color', 'rgba(0,0,0,0.3)');
+        }
+    }
+
     return Timer;
 })();
 
@@ -195,6 +226,11 @@ setInterval(function(){
         if (timers[key].playing)
         {
             timers[key].decrement();
+        }
+
+        if (timers[key].alarmed)
+        {
+            timers[key].toggleAlarmAnimation();
         }
     }
 }, 1000);
