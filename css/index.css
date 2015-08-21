@@ -46,6 +46,10 @@ body {
     margin-right: 10px;
 }
 
+#information button {
+    cursor: pointer;
+}
+
 /* Timers */
 
 #timerspace {
