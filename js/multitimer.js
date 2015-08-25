@@ -11,9 +11,8 @@ var Timer = (function () {
         this.seconds = 0;
         this.playing = false;
         this.alarmed = false;
-        this.sound = null;
-        this.muted = false;
-
+        this.sound = document.createElement('audio');
+        console.log(this.sound.muted);
         this.create();
     }
 
@@ -38,7 +37,7 @@ var Timer = (function () {
                             <option value="sounds/old-alarm.mp3">Mechanical Alarm Clock</option>\
                             <option value="sounds/bell.mp3">Ringing Bell</option>\
                         </select>\
-                        <button><img src="images/volume-off.png"/></button>\
+                        <button class="mute-button" onclick="timers[&quot;' + this.timerID + '&quot;].toggleMuted();"><img src="images/volume-on.png"/></button>\
                     </div>\
                 </div>\
                 <div class="timer-notes">\
@@ -77,6 +76,14 @@ var Timer = (function () {
         }
 
     };
+
+    Timer.prototype.toggleMuted = function () {
+        var muted = this.sound.muted;
+        this.sound.muted = !muted;
+
+        $(this.selector + ' .mute-button img').attr("src", !muted ? "images/volume-off.png" : "images/volume-on.png");
+
+    }
 
     Timer.prototype.play = function () {
         // Get the seconds
@@ -145,7 +152,6 @@ var Timer = (function () {
 
     Timer.prototype.toggleAlarmed = function () {
         var src = $(this.selector + ' .timer-type-options select').val();
-        this.sound = document.createElement('audio');
         this.sound.setAttribute('src', src);
         this.sound.setAttribute('loop', true);
         this.sound.play();
