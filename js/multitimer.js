@@ -23,9 +23,9 @@ var Timer = (function () {
                 <div class="timer-time">\
                     <h3>Timer</h3>\
                     <div class="timer-time-options">\
-                        <input type="text" name="hours" maxlength="2" value="00"/> :\
-                        <input type="text" name="minutes" maxlength="2" value="00"/> :\
-                        <input type="text" name="seconds" maxlength="2" value="00"/>\
+                        <input type="text" name="hours" maxlength="2" value="00" onchange="timeInput(this);"/> :\
+                        <input type="text" name="minutes" maxlength="2" value="00" onchange="secondMinuteInput(this);"/> :\
+                        <input type="text" name="seconds" maxlength="2" value="00" onchange="secondMinuteInput(this);"/>\
                     </div>\
                 </div>\
                 <div class="timer-type">\
@@ -215,6 +215,14 @@ $( window ).resize(function() {
   resizeTimerspace();
 });
 
+function secondMinuteInput(input) {
+    timeInput(input);
+    if (input.value > 59) input.value = 59;
+}
+
+function timeInput(input) {
+    if (input.value < 0) input.value = 0;
+}
 setInterval(function(){
     for (var key in timers) {
 
