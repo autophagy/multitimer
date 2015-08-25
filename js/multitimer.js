@@ -12,7 +12,6 @@ var Timer = (function () {
         this.playing = false;
         this.alarmed = false;
         this.sound = document.createElement('audio');
-        console.log(this.sound.muted);
         this.create();
     }
 
@@ -68,13 +67,7 @@ var Timer = (function () {
     }
 
     Timer.prototype.togglePlaying = function () {
-        if (this.playing)
-        {
-            this.pause();
-        } else {
-            this.play();
-        }
-
+        this.playing ? this.pause() : this.play();
     };
 
     Timer.prototype.toggleMuted = function () {
@@ -159,12 +152,8 @@ var Timer = (function () {
     };
 
     Timer.prototype.toggleAlarmAnimation = function () {
-        if ($.Color( $(this.selector).css('background-color')).toHexString() != this.colour) {
-            $(this.selector).css('background-color', this.colour);
-        } else {
-            console.log('poop');
-            $(this.selector).css('background-color', 'rgba(0,0,0,0.3)');
-        }
+        var currentColour = $.Color( $(this.selector).css('background-color')).toHexString();
+        $(this.selector).css('background-color', currentColour != this.colour ? this.colour : 'rgba(0,0,0,0.3)');
     }
 
     return Timer;
