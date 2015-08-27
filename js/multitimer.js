@@ -119,6 +119,7 @@ var Timer = (function () {
     }
 
     Timer.prototype.toggleAlarmed = function () {
+        $(this.selector+ ' .play-button img').attr("src", "images/stop.png");
         this.sound.setAttribute('src', $(this.selector + ' .timer-type-options select').val());
         this.sound.play();
         this.alarmed = true;
