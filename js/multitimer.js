@@ -164,7 +164,7 @@ function formatTime(time) {
 function resizeTimerspace() {
     var size = $(".timer").outerWidth(true);
     if (size != null) {
-        var screenSize = $(window).width();
+        var screenSize = $('body').width();
         $('#timerspace').css("margin-left", Math.floor((screenSize - (size * (Math.floor(screenSize/size))))/2) +"px");
     }
 }

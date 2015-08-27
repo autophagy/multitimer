@@ -1,5 +1,6 @@
 body {
     background-color: #D3E8B3;
+    min-width: 650px;
     margin: 0px;
     font-family: "Ubuntu", "Helvetica Neue", Helvetica, Arial, serif;
 }
