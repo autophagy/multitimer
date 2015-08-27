@@ -59,7 +59,7 @@ var Timer = (function () {
     }
 
     Timer.prototype.togglePlaying = function () {
-        this.playing ? this.pause() : this.play();
+        this.playing || this.alarmed ? this.pause() : this.play();
     };
 
     Timer.prototype.toggleMuted = function () {
@@ -86,6 +86,7 @@ var Timer = (function () {
         $(this.selector + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0.3)");
         $(this.selector + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0.15)");
         $(this.selector+ ' .play-button img').attr("src", "images/play.png");
+        $(this.selector).css('background-color', this.colour);
         this.playing = false;
         this.sound.pause();
         this.alarmed = false;
