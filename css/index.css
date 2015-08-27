@@ -33,8 +33,8 @@ body {
     background-color: rgba(0,0,0,0.25);
 }
 
-#title-bar img {
-    opacity: 0.6;
+button img {
+    opacity: 0.9;
 }
 
 #title-options {
