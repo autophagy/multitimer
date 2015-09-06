@@ -227,6 +227,3 @@ setInterval(function(){
     }
     updatePageTitle(lowestTime, alarmed);
 }, 1000);
-
-//$(document).prop('title','test');
-//issue #4
