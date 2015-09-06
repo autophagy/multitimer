@@ -37,7 +37,7 @@ var Timer = (function () {
                             <option value="sounds/old-alarm.mp3">Mechanical Alarm Clock</option>\
                             <option value="sounds/bell.mp3">Ringing Bell</option>\
                         </select>\
-                        <button class="mute-button" onclick="timers[&quot;' + this.timerID + '&quot;].toggleMuted();"><img src="images/volume-on.png"/></button>\
+                        <button title="Mute the alarm sound" class="mute-button" onclick="timers[&quot;' + this.timerID + '&quot;].toggleMuted();"><img src="images/volume-on.png"/></button>\
                     </div>\
                 </div>\
                 <div class="timer-notes">\
@@ -45,9 +45,9 @@ var Timer = (function () {
                     <textarea rows="4"></textarea>\
                 </div>\
                 <div class="timer-options">\
-                    <button class="play-button" onclick="timers[&quot;' + this.timerID + '&quot;].togglePlaying();"><img src="images/play.png" /></button>\
-                    <button class="reload-button" onclick="timers[&quot;' + this.timerID + '&quot;].reset();"><img src="images/reload.png" /></button>\
-                    <button class="close-button" onclick="timers[&quot;' + this.timerID + '&quot;].delete();"><img src="images/close.png" /></button>\
+                    <button title="Start/Pause the timer" class="play-button" onclick="timers[&quot;' + this.timerID + '&quot;].togglePlaying();"><img src="images/play.png" /></button>\
+                    <button title="Reset the timer" class="reload-button" onclick="timers[&quot;' + this.timerID + '&quot;].reset();"><img src="images/reload.png" /></button>\
+                    <button title="Close the timer" class="close-button" onclick="timers[&quot;' + this.timerID + '&quot;].delete();"><img src="images/close.png" /></button>\
                 </div>\
         </div>');
     }
