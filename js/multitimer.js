@@ -50,12 +50,15 @@ var Timer = (function () {
                     <button title="Close the timer" class="close-button" onclick="timers[&quot;' + this.timerID + '&quot;].delete();"><img src="images/close.png" /></button>\
                 </div>\
         </div>');
+
+        $('.timer-title:last input[name=timer-title]').select();
     }
 
     Timer.prototype.delete = function () {
         $(this.selector).remove();
         this.sound.pause();
         delete timers[this.timerID];
+        $('#title-options button:first').focus();
     }
 
     Timer.prototype.togglePlaying = function () {
@@ -77,7 +80,10 @@ var Timer = (function () {
             $(this.selector + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0)");
             $(this.selector + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0)");
             $(this.selector+ ' .play-button img').attr("src", "images/pause.png");
+            $('#title-options button:first').focus();
             this.playing = true;
+        } else {
+          $(this.selector + ' .timer-time-options input:first').select();
         }
     }
 
@@ -99,6 +105,7 @@ var Timer = (function () {
         $(this.selector + ' .timer-title input').val('New Timer');
         $(this.selector + ' .timer-type-options select').val('sounds/alarm.mp3');
         $(this.selector + ' .timer-notes textarea').val('');
+        $(this.selector + ' .timer-time-options input:first').select();
     }
 
     Timer.prototype.decrement = function () {
