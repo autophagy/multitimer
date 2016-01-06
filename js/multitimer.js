@@ -52,14 +52,14 @@ var Timer = (function () {
         </div>');
 
         $('.timer-title:last input[name=timer-title]').select();
-    }
+    };
 
     Timer.prototype.delete = function () {
         $(this.selector).remove();
         this.sound.pause();
         delete timers[this.timerID];
         $('#title-options button:first').focus();
-    }
+    };
 	
 	Timer.prototype.togglePlayingKey = function (event) {
 		if (event.keyCode == 13) {
@@ -74,7 +74,7 @@ var Timer = (function () {
     Timer.prototype.toggleMuted = function () {
         this.sound.muted = !this.sound.muted;
         $(this.selector + ' .mute-button img').attr("src", this.sound.muted ? "images/volume-off.png" : "images/volume-on.png");
-    }
+    };
 
     Timer.prototype.play = function () {
         this.seconds =  parseInt($(this.selector + ' input[name="hours"]').val() * 3600);
@@ -91,7 +91,7 @@ var Timer = (function () {
         } else {
           $(this.selector + ' .timer-time-options input:first').select();
         }
-    }
+    };
 
     Timer.prototype.pause = function () {
         $(this.selector + ' .timer-time-options input').prop("readonly", false);
@@ -102,7 +102,7 @@ var Timer = (function () {
         this.playing = false;
         this.sound.pause();
         this.alarmed = false;
-    }
+    };
 
     Timer.prototype.reset = function () {
         this.pause();
@@ -112,7 +112,7 @@ var Timer = (function () {
         $(this.selector + ' .timer-type-options select').val('sounds/alarm.mp3');
         $(this.selector + ' .timer-notes textarea').val('');
         $(this.selector + ' .timer-time-options input:first').select();
-    }
+    };
 
     Timer.prototype.decrement = function () {
             this.seconds--;
@@ -129,7 +129,7 @@ var Timer = (function () {
         $(this.selector + ' .timer-time-options input[name="hours"]').val(formatTime(time['h']));
         $(this.selector + ' .timer-time-options input[name="minutes"]').val(formatTime(time['m']));
         $(this.selector + ' .timer-time-options input[name="seconds"]').val(formatTime(time['s']));
-    }
+    };
 
     Timer.prototype.toggleAlarmed = function () {
         $(this.selector+ ' .play-button img').attr("src", "images/stop.png");
@@ -142,7 +142,7 @@ var Timer = (function () {
         var currentColour = $.Color( $(this.selector).css('background-color')).toHexString();
         $(this.selector).css('background-color', currentColour != this.colour ? this.colour : 'rgba(0,0,0,0.3)');
         var title = $(document).prop('title');
-    }
+    };
 
     return Timer;
 })();
@@ -155,34 +155,34 @@ function addTimer() {
     timers[s] = timer;
     timerCounter++;
     resizeTimerspace();
-}
+};
 
 function removeTimers() {
     for (var key in timers) timers[key].delete();
     timers = {};
-}
+};
 
 function playTimers() {
     for (var key in timers) timers[key].play();
-}
+};
 
 function pauseTimers() {
     for (var key in timers) timers[key].pause();
-}
+};
 
 // Misc functions
 
 function formatTime(time) {
     if (time.toString().length < 2) return '0' + time.toString();
     return time;
-}
+};
 
 function getTimeUnits(bareSeconds) {
     var hours = Math.floor(bareSeconds/3600);
     var minutes = Math.floor((bareSeconds - hours*3600)/60);
     var seconds = bareSeconds - (hours*3600) - (minutes*60);
     return {'h': hours, 'm': minutes, 's': seconds};
-}
+};
 
 function resizeTimerspace() {
     var size = $(".timer").outerWidth(true);
@@ -190,7 +190,7 @@ function resizeTimerspace() {
         var screenSize = $('body').width();
         $('#timerspace').css("margin-left", Math.floor((screenSize - (size * (Math.floor(screenSize/size))))/2) +"px");
     }
-}
+};
 
 $( window ).resize(function() {
   resizeTimerspace();
@@ -199,11 +199,11 @@ $( window ).resize(function() {
 function secondMinuteInput(input) {
     timeInput(input);
     if (input.value > 59) input.value = 59;
-}
+};
 
 function timeInput(input) {
     if (input.value < 0) input.value = 0;
-}
+};
 
 function getPageTime(lowestTime) {
     if(lowestTime != null) {
@@ -212,7 +212,7 @@ function getPageTime(lowestTime) {
     } else {
         return '';
     }
-}
+};
 
 function getPageAlarmed(alarmed) {
     var title = $(document).prop('title');
@@ -221,12 +221,12 @@ function getPageAlarmed(alarmed) {
     } else {
         return '';
     }
-}
+};
 
 function updatePageTitle(lowestTime, alarmed) {
     var titlePrepend = getPageAlarmed(alarmed) + getPageTime(lowestTime);
     $(document).prop('title', titlePrepend + pageTitle);
-}
+};
 
 setInterval(function(){
     var lowestTime = null;
