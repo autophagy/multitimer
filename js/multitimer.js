@@ -24,9 +24,9 @@ var Timer = (function () {
                 <div class="timer-time">\
                     <h3>Timer</h3>\
                     <div class="timer-time-options">\
-                        <input type="text" name="hours" maxlength="2" value="00" onchange="timeInput(this);"/> :\
-                        <input type="text" name="minutes" maxlength="2" value="00" onchange="secondMinuteInput(this);"/> :\
-                        <input type="text" name="seconds" maxlength="2" value="00" onchange="secondMinuteInput(this);"/>\
+                        <input type="text" name="hours" maxlength="2" value="00" onchange="timeInput(this);" onkeypress="timers[&quot;' + this.timerID + '&quot;].togglePlayingKey(event);"/> :\
+                        <input type="text" name="minutes" maxlength="2" value="00" onchange="secondMinuteInput(this);" onkeypress="timers[&quot;' + this.timerID + '&quot;].togglePlayingKey(event);"/> :\
+                        <input type="text" name="seconds" maxlength="2" value="00" onchange="secondMinuteInput(this);" onkeypress="timers[&quot;' + this.timerID + '&quot;].togglePlayingKey(event);"/>\
                     </div>\
                 </div>\
                 <div class="timer-type">\
@@ -60,6 +60,12 @@ var Timer = (function () {
         delete timers[this.timerID];
         $('#title-options button:first').focus();
     }
+	
+	Timer.prototype.togglePlayingKey = function (event) {
+		if (event.keyCode == 13) {
+			this.togglePlaying();
+		}
+	};
 
     Timer.prototype.togglePlaying = function () {
         this.playing || this.alarmed ? this.pause() : this.play();
