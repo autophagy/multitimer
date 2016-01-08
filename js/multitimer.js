@@ -240,3 +240,7 @@ setInterval(function(){
     }
     updatePageTitle(lowestTime, alarmed);
 }, 1000);
+
+$( document ).ready(function() {
+    $('#add-button').focus();
+});
