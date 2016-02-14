@@ -9,7 +9,7 @@ With this tool, you can:
 - Specify identifying details for each timer, such as title and notes, to allow for easier tracking
 - Synchronise pausing/playing of alarms
 
-You can find it at [multitimer.io](http://multitimer.io). I also wrote a small thing on the development process of this project [here](http://www.deadcells.org/multitimer/).
+You can find it at [multitimer.io](http://multitimer.io). I also wrote a small thing on the development process of this project [here](https://autophagy.github.io/bug-generator/).
 
 ## Resources
 
