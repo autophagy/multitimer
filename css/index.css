@@ -33,7 +33,7 @@ body {
     margin-right: 10px;
 }
 
-#title-bar button {
+button {
     margin: 0px 5px 0px 5px;
     min-height: 40px;
     min-width: 40px;
@@ -45,7 +45,7 @@ body {
 }
 
 
-#title-bar button:hover {
+button:hover {
     background-color: rgba(255,255,255,0.3);
 }
 
@@ -97,22 +97,6 @@ button img {
     font-size: 1em;
     width: 80%;
     padding: 9px 0px 9px 0px;
-}
-
-.timer button {
-  margin: 0px 5px 0px 5px;
-  min-height: 40px;
-  min-width: 40px;
-  background-color: rgba(255,255,255,0.2);
-  background: linear-gradient(rgba(255,255,255,0.25) 30%, rgba(255,255,255,0.2) 100%);
-  border: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.44);
-  color: rgba(0,0,0,0.8);
-  border-radius: 4px;
-}
-
-.timer button:hover {
-    background-color: rgba(0,0,0,0.25);
 }
 
 .timer h3 {
