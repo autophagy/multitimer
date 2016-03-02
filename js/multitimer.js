@@ -7,7 +7,7 @@ var Timer = (function () {
     function Timer(newID) {
         this.timerID = newID;
         this.selector = '#' + newID;
-        this.colour = $.Color().hsla(Math.floor(Math.random() * 36)*10,0.6,0.4,1).toHexString();
+        this.colour = 'hsla('+ Math.floor(Math.random() * 36)*10 + ',60%,40%,1)';
         this.seconds = 0;
         this.playing = false;
         this.alarmed = false;
