@@ -7,7 +7,7 @@ var Timer = (function () {
     function Timer(newID) {
         this.timerID = newID;
         this.selector = '#' + newID;
-        this.colour = $.Color().hsla(Math.floor(Math.random() * 36)*10,1,0.7,1).toHexString();
+        this.colour = $.Color().hsla(Math.floor(Math.random() * 36)*10,0.6,0.4,1).toHexString();
         this.seconds = 0;
         this.playing = false;
         this.alarmed = false;
@@ -60,7 +60,7 @@ var Timer = (function () {
         delete timers[this.timerID];
         $('#title-options button:first').focus();
     };
-	
+
 	Timer.prototype.togglePlayingKey = function (event) {
 		if (event.keyCode == 13) {
 			this.togglePlaying();
