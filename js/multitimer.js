@@ -7,7 +7,7 @@ var Timer = (function () {
     function Timer(newID) {
         this.timerID = newID;
         this.selector = '#' + newID;
-        this.colour = $.Color().hsla(Math.floor(Math.random() * 36)*10,1,0.7,1).toHexString();
+        this.colour = 'hsla('+ Math.floor(Math.random() * 36)*10 + ',60%,40%,1)';
         this.seconds = 0;
         this.playing = false;
         this.alarmed = false;
@@ -37,7 +37,7 @@ var Timer = (function () {
                             <option value="sounds/old-alarm.mp3">Mechanical Alarm Clock</option>\
                             <option value="sounds/bell.mp3">Ringing Bell</option>\
                         </select>\
-                        <button title="Mute the alarm sound" class="mute-button" onclick="timers[&quot;' + this.timerID + '&quot;].toggleMuted();"><img src="images/volume-on.png"/></button>\
+                        <button title="Mute the alarm sound" class="mute-button volume-on-icon" onclick="timers[&quot;' + this.timerID + '&quot;].toggleMuted();"></button>\
                     </div>\
                 </div>\
                 <div class="timer-notes">\
@@ -45,13 +45,18 @@ var Timer = (function () {
                     <textarea rows="4"></textarea>\
                 </div>\
                 <div class="timer-options">\
-                    <button title="Start/Pause the timer" class="play-button" onclick="timers[&quot;' + this.timerID + '&quot;].togglePlaying();"><img src="images/play.png" /></button>\
-                    <button title="Reset the timer" class="reload-button" onclick="timers[&quot;' + this.timerID + '&quot;].reset();"><img src="images/reload.png" /></button>\
-                    <button title="Close the timer" class="close-button" onclick="timers[&quot;' + this.timerID + '&quot;].delete();"><img src="images/close.png" /></button>\
+                    <button title="Start/Pause the timer" class="play-button play-icon" onclick="timers[&quot;' + this.timerID + '&quot;].togglePlaying();"></button>\
+                    <button title="Reset the timer" class="reload-button reload-icon" onclick="timers[&quot;' + this.timerID + '&quot;].reset();"></button>\
+                    <button title="Close the timer" class="close-button close-icon" onclick="timers[&quot;' + this.timerID + '&quot;].delete();"></button>\
                 </div>\
         </div>');
 
         $('.timer-title:last input[name=timer-title]').select();
+
+        // This seems strange and roundabout, but makes things easier for colour checking in the alarm toggle
+        // now that the jQueryUI plugin has been removed.
+
+        this.colour = $(this.selector).css('background-color');
     };
 
     Timer.prototype.delete = function () {
@@ -60,7 +65,7 @@ var Timer = (function () {
         delete timers[this.timerID];
         $('#title-options button:first').focus();
     };
-	
+
 	Timer.prototype.togglePlayingKey = function (event) {
 		if (event.keyCode == 13) {
 			this.togglePlaying();
@@ -73,7 +78,8 @@ var Timer = (function () {
 
     Timer.prototype.toggleMuted = function () {
         this.sound.muted = !this.sound.muted;
-        $(this.selector + ' .mute-button img').attr("src", this.sound.muted ? "images/volume-off.png" : "images/volume-on.png");
+        $(this.selector + ' .mute-button').toggleClass("volume-off-icon");
+        $(this.selector + ' .mute-button').toggleClass("volume-on-icon");
     };
 
     Timer.prototype.play = function () {
@@ -83,9 +89,9 @@ var Timer = (function () {
         if (this.seconds > 0)
         {
             $(this.selector + ' .timer-time-options input').prop("readonly", true);
-            $(this.selector + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0)");
             $(this.selector + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0)");
-            $(this.selector+ ' .play-button img').attr("src", "images/pause.png");
+            $(this.selector+ ' .play-button').addClass("pause-icon");
+            $(this.selector+ ' .play-button').removeClass("play-icon");
             $('#title-options button:first').focus();
             this.playing = true;
         } else {
@@ -95,9 +101,9 @@ var Timer = (function () {
 
     Timer.prototype.pause = function () {
         $(this.selector + ' .timer-time-options input').prop("readonly", false);
-        $(this.selector + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0.3)");
         $(this.selector + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0.15)");
-        $(this.selector+ ' .play-button img').attr("src", "images/play.png");
+        $(this.selector+ ' .play-button').addClass("play-icon");
+        $(this.selector+ ' .play-button').removeClass("pause-icon stop-icon");
         $(this.selector).css('background-color', this.colour);
         this.playing = false;
         this.sound.pause();
@@ -132,15 +138,16 @@ var Timer = (function () {
     };
 
     Timer.prototype.toggleAlarmed = function () {
-        $(this.selector+ ' .play-button img').attr("src", "images/stop.png");
+      $(this.selector+ ' .play-button').addClass("stop-icon");
+      $(this.selector+ ' .play-button').removeClass("pause-icon");
         this.sound.setAttribute('src', $(this.selector + ' .timer-type-options select').val());
         this.sound.play();
         this.alarmed = true;
     };
 
     Timer.prototype.toggleAlarmAnimation = function () {
-        var currentColour = $.Color( $(this.selector).css('background-color')).toHexString();
-        $(this.selector).css('background-color', currentColour != this.colour ? this.colour : 'rgba(0,0,0,0.3)');
+        var currentColour = $(this.selector).css('background-color');
+        $(this.selector).css('background-color', currentColour != this.colour ? this.colour : 'hsla(0, 0%, 0%, 0.3)');
         var title = $(document).prop('title');
     };
 

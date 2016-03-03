@@ -1,8 +1,9 @@
 body {
-    background-color: #D3E8B3;
+    background-color: #BDCE9C;
     min-width: 650px;
     margin: 0px;
     font-family: "Ubuntu", "Helvetica Neue", Helvetica, Arial, serif;
+    color: #FFFFFF;
 }
 
 #javascript-warning {
@@ -19,31 +20,81 @@ body {
 }
 
 #title-bar {
-    background-color: hsl(72, 69%, 71%);
+    background-color: hsla(81,63%,31%,1);
     padding: 10px 0px 10px 0px;
     display: inline-block;
     width: 100%;
-    border-bottom: 1px solid #A9BA65;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.22);
+    color: #FFFFFF;
+    height: 46px;
 }
 
 #title-bar h1 {
     display: inline;
+    margin: 0px;
     margin-right: 10px;
+    position: relative;
+    top: 1px;
+    float: left;
 }
 
-#title-bar button {
+button {
     margin: 0px 5px 0px 5px;
-    min-height: 40px;
-    min-width: 40px;
-    background-color: rgba(0,0,0,0.15);
-    border: 1px solid #66703D;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.44);
     color: rgba(0,0,0,0.8);
     border-radius: 4px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+button.plus-icon {
+  background-image: url('/images/plus.png');
+}
+
+button.play-icon {
+  background-image: url('/images/play.png');
+}
+
+button.pause-icon {
+  background-image: url('/images/pause.png');
+}
+
+button.stop-icon {
+  background-image: url('/images/stop.png');
+}
+
+button.reload-icon {
+  background-image: url('/images/reload.png');
+}
+
+button.close-icon {
+  background-image: url('/images/close.png');
+}
+
+button.volume-off-icon {
+  background-image: url('/images/volume-off.png');
+}
+
+button.volume-on-icon {
+  background-image: url('/images/volume-on.png');
+}
+
+button.github-icon {
+  background-image: url('/images/github.png');
+}
+
+button.mail-icon {
+  background-image: url('/images/mail.png');
 }
 
 
-#title-bar button:hover {
-    background-color: rgba(0,0,0,0.25);
+button:hover {
+    background-color: rgba(255,255,255,0.3);
 }
 
 button img {
@@ -60,8 +111,9 @@ button img {
     margin-right: 10px;
 }
 
-#information button {
-    cursor: pointer;
+#title-options, #information {
+  position: relative;
+  top: 3px;
 }
 
 /* Timers */
@@ -77,18 +129,16 @@ button img {
     border-radius: 5px;
     position: relative;
     max-width: 17em;
-    border: 1px solid rgba(0,0,0,0.3);
-    -webkit-box-shadow: 10px 10px 67px -27px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 67px -27px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 67px -27px rgba(0,0,0,0.75);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.44);
+    box-shadow: 0px 6px 12px -4px rgba(0, 0, 0, 0.5);
 }
 
 .timer input[type="text"], .timer textarea, .timer select, .timer select options {
-    background-color: rgba(0,0,0,0.15);
-    border: 1px solid rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0);
     box-shadow: none;
     border-radius: 5px;
-    color: rgba(0,0,0,0.8);
+    color: rgba(255, 255, 255, 0.9);
     -moz-appearance: none;
 }
 
@@ -98,22 +148,14 @@ button img {
     padding: 9px 0px 9px 0px;
 }
 
-.timer button {
-    background-color: rgba(0,0,0,0.15);
-    margin: 0px 5px 0px 5px;
-    min-height: 40px;
-    min-width: 40px;
-    border: 1px solid rgba(0,0,0,0.3);
-    border-radius: 4px;
-}
-
-.timer button:hover {
-    background-color: rgba(0,0,0,0.25);
+.timer select option {
+  background-color: #E6E6E6;
+  color: #1B1B1B;
 }
 
 .timer h3 {
     font-size: 1em;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .timer .timer-title input {
