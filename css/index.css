@@ -26,13 +26,16 @@ body {
     width: 100%;
     border-bottom: 3px solid rgba(0, 0, 0, 0.22);
     color: #FFFFFF;
+    height: 46px;
 }
 
 #title-bar h1 {
     display: inline;
+    margin: 0px;
     margin-right: 10px;
     position: relative;
-    top: -5px;
+    top: 1px;
+    float: left;
 }
 
 button {
