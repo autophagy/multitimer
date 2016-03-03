@@ -99,6 +99,11 @@ button img {
     padding: 9px 0px 9px 0px;
 }
 
+.timer select option {
+  background-color: #E6E6E6;
+  color: #1B1B1B;
+}
+
 .timer h3 {
     font-size: 1em;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
