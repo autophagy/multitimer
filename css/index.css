@@ -31,6 +31,8 @@ body {
 #title-bar h1 {
     display: inline;
     margin-right: 10px;
+    position: relative;
+    top: -5px;
 }
 
 button {
@@ -106,8 +108,9 @@ button img {
     margin-right: 10px;
 }
 
-#information button {
-    cursor: pointer;
+#title-options, #information {
+  position: relative;
+  top: 3px;
 }
 
 /* Timers */
@@ -132,7 +135,7 @@ button img {
     border: 1px solid rgba(0, 0, 0, 0);
     box-shadow: none;
     border-radius: 5px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     -moz-appearance: none;
 }
 
