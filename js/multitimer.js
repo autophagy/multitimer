@@ -89,7 +89,6 @@ var Timer = (function () {
         if (this.seconds > 0)
         {
             $(this.selector + ' .timer-time-options input').prop("readonly", true);
-            $(this.selector + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0)");
             $(this.selector + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0)");
             $(this.selector+ ' .play-button').addClass("pause-icon");
             $(this.selector+ ' .play-button').removeClass("play-icon");
@@ -102,7 +101,6 @@ var Timer = (function () {
 
     Timer.prototype.pause = function () {
         $(this.selector + ' .timer-time-options input').prop("readonly", false);
-        $(this.selector + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0.3)");
         $(this.selector + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0.15)");
         $(this.selector+ ' .play-button').addClass("play-icon");
         $(this.selector+ ' .play-button').removeClass("pause-icon stop-icon");
