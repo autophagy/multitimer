@@ -37,7 +37,7 @@ var Timer = (function () {
                             <option value="sounds/old-alarm.mp3">Mechanical Alarm Clock</option>\
                             <option value="sounds/bell.mp3">Ringing Bell</option>\
                         </select>\
-                        <button title="Mute the alarm sound" class="mute-button" onclick="timers[&quot;' + this.timerID + '&quot;].toggleMuted();"><img src="images/volume-on.png"/></button>\
+                        <button title="Mute the alarm sound" class="mute-button volume-on-icon" onclick="timers[&quot;' + this.timerID + '&quot;].toggleMuted();"></button>\
                     </div>\
                 </div>\
                 <div class="timer-notes">\
@@ -45,9 +45,9 @@ var Timer = (function () {
                     <textarea rows="4"></textarea>\
                 </div>\
                 <div class="timer-options">\
-                    <button title="Start/Pause the timer" class="play-button" onclick="timers[&quot;' + this.timerID + '&quot;].togglePlaying();"><img src="images/play.png" /></button>\
-                    <button title="Reset the timer" class="reload-button" onclick="timers[&quot;' + this.timerID + '&quot;].reset();"><img src="images/reload.png" /></button>\
-                    <button title="Close the timer" class="close-button" onclick="timers[&quot;' + this.timerID + '&quot;].delete();"><img src="images/close.png" /></button>\
+                    <button title="Start/Pause the timer" class="play-button play-icon" onclick="timers[&quot;' + this.timerID + '&quot;].togglePlaying();"></button>\
+                    <button title="Reset the timer" class="reload-button reload-icon" onclick="timers[&quot;' + this.timerID + '&quot;].reset();"></button>\
+                    <button title="Close the timer" class="close-button close-icon" onclick="timers[&quot;' + this.timerID + '&quot;].delete();"></button>\
                 </div>\
         </div>');
 
@@ -73,7 +73,8 @@ var Timer = (function () {
 
     Timer.prototype.toggleMuted = function () {
         this.sound.muted = !this.sound.muted;
-        $(this.selector + ' .mute-button img').attr("src", this.sound.muted ? "images/volume-off.png" : "images/volume-on.png");
+        $(this.selector + ' .mute-button').toggleClass("volume-off-icon");
+        $(this.selector + ' .mute-button').toggleClass("volume-on-icon");
     };
 
     Timer.prototype.play = function () {
@@ -85,7 +86,8 @@ var Timer = (function () {
             $(this.selector + ' .timer-time-options input').prop("readonly", true);
             $(this.selector + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0)");
             $(this.selector + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0)");
-            $(this.selector+ ' .play-button img').attr("src", "images/pause.png");
+            $(this.selector+ ' .play-button').addClass("pause-icon");
+            $(this.selector+ ' .play-button').removeClass("play-icon");
             $('#title-options button:first').focus();
             this.playing = true;
         } else {
@@ -97,7 +99,8 @@ var Timer = (function () {
         $(this.selector + ' .timer-time-options input').prop("readonly", false);
         $(this.selector + ' .timer-time-options input').css("border", "1px solid rgba(0,0,0,0.3)");
         $(this.selector + ' .timer-time-options input').css("background-color", "rgba(0,0,0,0.15)");
-        $(this.selector+ ' .play-button img').attr("src", "images/play.png");
+        $(this.selector+ ' .play-button').addClass("play-icon");
+        $(this.selector+ ' .play-button').removeClass("pause-icon stop-icon");
         $(this.selector).css('background-color', this.colour);
         this.playing = false;
         this.sound.pause();
@@ -132,7 +135,8 @@ var Timer = (function () {
     };
 
     Timer.prototype.toggleAlarmed = function () {
-        $(this.selector+ ' .play-button img').attr("src", "images/stop.png");
+      $(this.selector+ ' .play-button').addClass("stop-icon");
+      $(this.selector+ ' .play-button').removeClass("pause-icon");
         this.sound.setAttribute('src', $(this.selector + ' .timer-type-options select').val());
         this.sound.play();
         this.alarmed = true;

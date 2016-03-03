@@ -35,13 +35,56 @@ body {
 
 button {
     margin: 0px 5px 0px 5px;
-    min-height: 40px;
-    min-width: 40px;
+    height: 40px;
+    width: 40px;
     background-color: rgba(255,255,255,0.2);
     border: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.44);
     color: rgba(0,0,0,0.8);
     border-radius: 4px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+button.plus-icon {
+  background-image: url('/images/plus.png');
+}
+
+button.play-icon {
+  background-image: url('/images/play.png');
+}
+
+button.pause-icon {
+  background-image: url('/images/pause.png');
+}
+
+button.stop-icon {
+  background-image: url('/images/stop.png');
+}
+
+button.reload-icon {
+  background-image: url('/images/reload.png');
+}
+
+button.close-icon {
+  background-image: url('/images/close.png');
+}
+
+button.volume-off-icon {
+  background-image: url('/images/volume-off.png');
+}
+
+button.volume-on-icon {
+  background-image: url('/images/volume-on.png');
+}
+
+button.github-icon {
+  background-image: url('/images/github.png');
+}
+
+button.mail-icon {
+  background-image: url('/images/mail.png');
 }
 
 

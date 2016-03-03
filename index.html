@@ -17,23 +17,19 @@
     <div id="title-bar">
         <div id="title-options">
             <h1>MULTI/TIMER</h1>
-            <button id="add-button" title="Add a new timer" onclick="addTimer();"><img src="images/plus.png" /></button>
+            <button id="add-button" class="plus-icon" title="Add a new timer" onclick="addTimer();"></button>
 
-            <button title="Remove all timers" onclick="removeTimers();"><img src="images/close.png" /></button>
+            <button class="close-icon" title="Remove all timers" onclick="removeTimers();"></button>
 
-            <button title="Play all timers" onclick="playTimers();"><img src="images/play.png" /></button>
+            <button class="play-icon" title="Play all timers" onclick="playTimers();"></button>
 
-            <button title="Pause all timers" onclick="pauseTimers();"><img src="images/pause.png" /></button>
+            <button class="pause-icon" title="Pause all timers" onclick="pauseTimers();"></button>
         </div>
 
         <div id="information">
-            <button id="github" tabindex="-10" title="Github" onclick="window.open('https://github.com/Autophagy/multitimer');">
-                <img src="images/github.png" />
-            </button>
+            <button id="github" class="github-icon" tabindex="-10" title="Github" onclick="window.open('https://github.com/Autophagy/multitimer');"></button>
 
-            <button tabindex="-20" id="contact" title="Contact" onclick="window.open('https://autophagy.github.io/');">
-                <img src="images/mail.png" />
-            </button>
+            <button tabindex="-20" id="contact" class="mail-icon" title="Contact" onclick="window.open('https://autophagy.github.io/');"></button>
         </div>
     </div>
 
