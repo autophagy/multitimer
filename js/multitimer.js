@@ -52,6 +52,11 @@ var Timer = (function () {
         </div>');
 
         $('.timer-title:last input[name=timer-title]').select();
+
+        // This seems strange and roundabout, but makes things easier for colour checking in the alarm toggle
+        // now that the jQueryUI plugin has been removed.
+
+        this.colour = $(this.selector).css('background-color');
     };
 
     Timer.prototype.delete = function () {
@@ -143,8 +148,8 @@ var Timer = (function () {
     };
 
     Timer.prototype.toggleAlarmAnimation = function () {
-        var currentColour = $.Color( $(this.selector).css('background-color')).toHexString();
-        $(this.selector).css('background-color', currentColour != this.colour ? this.colour : 'rgba(0,0,0,0.3)');
+        var currentColour = $(this.selector).css('background-color');
+        $(this.selector).css('background-color', currentColour != this.colour ? this.colour : 'hsla(0, 0%, 0%, 0.3)');
         var title = $(document).prop('title');
     };
 
