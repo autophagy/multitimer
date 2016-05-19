@@ -1,9 +1,17 @@
+html, body {
+  height: 100%;
+}
+
 body {
     background-color: #BDCE9C;
-    min-width: 650px;
     margin: 0px;
     font-family: "Ubuntu", "Helvetica Neue", Helvetica, Arial, serif;
     color: #FFFFFF;
+}
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
 }
 
 #javascript-warning {
@@ -19,11 +27,10 @@ body {
     margin-top: 65px;
 }
 
-#title-bar {
+#title-bar, #footer {
     background-color: hsla(81,63%,31%,1);
-    padding: 10px 0px 10px 0px;
-    display: inline-block;
-    width: 100%;
+    padding: 10px;
+    display: block;
     border-bottom: 3px solid rgba(0, 0, 0, 0.22);
     color: #FFFFFF;
     height: 46px;
@@ -34,7 +41,7 @@ body {
     margin: 0px;
     margin-right: 10px;
     position: relative;
-    top: 1px;
+    top: 4px;
     float: left;
 }
 
@@ -103,15 +110,28 @@ button img {
 
 #title-options {
     float: left;
-    margin-left: 10px;
 }
 
 #information {
     float: right;
-    margin-right: 10px;
 }
 
 #title-options, #information {
+  position: relative;
+  top: 3px;
+}
+
+#footer {
+  display: none;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0px;
+}
+
+#footer button {
   position: relative;
   top: 3px;
 }
@@ -195,4 +215,28 @@ button img {
 .timer .timer-options .close-button {
     float: right;
     margin-right: 0px;
+}
+
+@media only screen and (max-width: 550px) {
+  #title-options {
+    display: none;
+  }
+
+  #timerspace {
+    margin-bottom: 70px;
+  }
+
+  #footer {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  #title-bar h1 {
+    font-size: 1.8em;
+    top: 7px;
+  }
+  #title-bar, #footer {
+    padding: 5px
+  }
 }

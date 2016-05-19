@@ -11,6 +11,7 @@
     <script src="js/multitimer.js"></script>
 </head>
 <body>
+  <div id="wrapper">
 
     <noscript id="javascript-warning">
         <h1>Please Enable Javascript</h1>
@@ -18,8 +19,8 @@
     </noscript>
 
     <div id="title-bar">
+        <h1>MULTI/TIMER</h1>
         <div id="title-options">
-            <h1>MULTI/TIMER</h1>
             <button id="add-button" class="plus-icon" title="Add a new timer" onclick="addTimer();"></button>
 
             <button class="close-icon" title="Remove all timers" onclick="removeTimers();"></button>
@@ -39,6 +40,18 @@
     <div id="timerspace">
 
     </div>
+
+    <div id="footer">
+          <button id="add-button-footer" class="plus-icon" title="Add a new timer" onclick="addTimer();"></button>
+
+          <button class="close-icon" title="Remove all timers" onclick="removeTimers();"></button>
+
+          <button class="play-icon" title="Play all timers" onclick="playTimers();"></button>
+
+          <button class="pause-icon" title="Pause all timers" onclick="pauseTimers();"></button>
+    </div>
+
+  </div>
 
 </body>
 </html>
