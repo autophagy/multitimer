@@ -61,43 +61,43 @@ button {
 }
 
 button.plus-icon {
-  background-image: url('/images/plus.png');
+  background-image: url('../images/plus.png');
 }
 
 button.play-icon {
-  background-image: url('/images/play.png');
+  background-image: url('../images/play.png');
 }
 
 button.pause-icon {
-  background-image: url('/images/pause.png');
+  background-image: url('../images/pause.png');
 }
 
 button.stop-icon {
-  background-image: url('/images/stop.png');
+  background-image: url('../images/stop.png');
 }
 
 button.reload-icon {
-  background-image: url('/images/reload.png');
+  background-image: url('../images/reload.png');
 }
 
 button.close-icon {
-  background-image: url('/images/close.png');
+  background-image: url('../images/close.png');
 }
 
 button.volume-off-icon {
-  background-image: url('/images/volume-off.png');
+  background-image: url('../images/volume-off.png');
 }
 
 button.volume-on-icon {
-  background-image: url('/images/volume-on.png');
+  background-image: url('../images/volume-on.png');
 }
 
 button.github-icon {
-  background-image: url('/images/github.png');
+  background-image: url('../images/github.png');
 }
 
 button.mail-icon {
-  background-image: url('/images/mail.png');
+  background-image: url('../images/mail.png');
 }
 
 
