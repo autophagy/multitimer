@@ -1,3 +1,5 @@
+This project has been archived and superseeced by [tíd](https://github.com/autophagy/tid).
+
 <p align="center">
   <img src="docs/example.png"/>
 </p>
@@ -9,7 +11,7 @@ With this tool, you can:
 - Specify identifying details for each timer, such as title and notes, to allow for easier tracking
 - Synchronise pausing/playing of alarms
 
-You can find it at [multitimer.io](http://multitimer.io). I also wrote a small thing on the development process of this project [here](https://autophagy.github.io/bug-generator/).
+You can find it at [here](http://autophagy.github.io/multitimer).
 
 ## Resources
 
